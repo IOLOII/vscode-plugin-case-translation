@@ -2,7 +2,7 @@
 
 该项目基于 `驼峰翻译助手` 的小改动，修改内容：屏蔽调用翻译函数，仅保留驼峰转义功能
 
-<!-- [有问题直接报issue](https://github.com/SvenZhao/case-translation/issues)
+<!-- [有问题直接报issue](https://github.com/IOLOII/vscode-plugin-case-translation/issues)
 ```
 更新了免费的谷歌翻译引擎
 
