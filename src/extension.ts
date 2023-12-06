@@ -1,7 +1,13 @@
 /* eslint-disable no-await-in-loop */
 /* eslint-disable no-useless-escape */
-import { window, ExtensionContext, commands, QuickPickItem, QuickPickOptions, workspace } from "vscode";
-import translatePlatforms, { EengineType } from "./inc/translate";
+import {
+  window, ExtensionContext, commands, QuickPickItem, QuickPickOptions
+  // , workspace
+} from "vscode";
+
+// import
+// translatePlatforms,
+// { EengineType } from "./inc/translate";
 
 import {
   camelCase,
@@ -15,14 +21,14 @@ import {
   noCase,
   pathCase,
 } from "change-case";
-
-interface IWordResult {
-  engine: EengineType;
-  srcText: string;
-  result: string;
-}
+console.log("ahsjkd")
+// interface IWordResult {
+//   engine: EengineType;
+//   srcText: string;
+//   result: string;
+// }
 /** 翻译的内容缓存防止多次请求 */
-const translateCacheWords: IWordResult[] = [];
+// const translateCacheWords: IWordResult[] = [];
 const changeCaseMap = [
   { name: "camelCase", handle: camelCase, description: "camelCase 驼峰(小)" },
   { name: "pascalCase", handle: pascalCase, description: "pascalCase 驼峰(大)" },
@@ -91,31 +97,35 @@ async function vscodeSelect(word: string): Promise<string | undefined> {
  */
 
 async function getTranslateResult(srcText: string) {
-  const engine: EengineType = workspace.getConfiguration("caseTranslation").translationEngine;
-  const cache = translateCacheWords.find((item) => item.engine === engine && item.srcText === srcText);
-  if (cache) {
-    return Promise.resolve(cache.result);
-  }
-  const translate = translatePlatforms[engine] || translatePlatforms.google;
+  // const engine: EengineType = workspace.getConfiguration("caseTranslation").translationEngine;
+  // const cache = translateCacheWords.find((item) =>
+  //   // item.engine === engine &&
+  //   item.srcText === srcText);
+  // if (cache) {
+  //   return Promise.resolve(cache.result);
+  // }
+  // const translate = translatePlatforms[engine] || translatePlatforms.google;
   // 正则快速判断英文
   if (/^[a-zA-Z\d\s\/\-\._]+$/.test(srcText)) {
     return srcText;
   }
-  return
+  window.showWarningMessage(`Only support for code case transition`);
+  return false
   // eslint-disable-next-line no-unreachable
   try {
-    window.showQuickPick([{ label: "网络翻译中..." }]);
-    const res = await translate(srcText, "en");
-    const result = res.text;
-    if (result) {
-      translateCacheWords.push({ engine, srcText, result });
-    }
-    return result;
+    return srcText
+    // window.showQuickPick([{ label: "网络翻译中..." }]);
+    // const res = await translate(srcText, "en");
+    // const result = res.text;
+    // if (result) {
+    //   translateCacheWords.push({ engine, srcText, result });
+    // }
+    // return result;
   } catch (error) {
     // eslint-disable-next-line no-console
-    console.error(error);
-    window.showInformationMessage(`${engine}翻译异常,请检查网络或引擎token配置是否正确 ${JSON.stringify(error)}`);
-    return null;
+    // console.error(error);
+    // window.showInformationMessage(`${engine}翻译异常,请检查网络或引擎token配置是否正确 ${JSON.stringify(error)}`);
+    return srcText;
   }
 }
 async function main() {

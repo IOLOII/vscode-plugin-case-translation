@@ -2,6 +2,7 @@
 /* eslint-disable @typescript-eslint/no-shadow */
 import { window, workspace } from 'vscode';
 
+
 // 引入三个翻译引擎
 const google = require('@asmagin/google-translate-api');
 const BaiduTranslate = require('node-baidu-translate');
