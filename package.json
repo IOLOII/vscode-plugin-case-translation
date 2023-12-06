@@ -4,7 +4,7 @@
   "description": "一键转换成常用大小驼峰等格式",
   "publisher": "IOLOII",
   "icon": "images/Snipaste_2023-12-07_00-39-11.png",
-  "version": "1.0.1",
+  "version": "1.0.3",
   "engines": {
     "vscode": "^1.50.0"
   },
@@ -196,9 +196,9 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/SvenZhao/case-translation"
+    "url": "https://github.com/IOLOII/vscode-plugin-case-translation"
   },
-  "homepage": "https://github.com/SvenZhao/case-translation/blob/master/README.md",
+  "homepage": "https://github.com/IOLOII/vscode-plugin-case-translation/blob/master/README.md",
   "husky": {
     "hooks": {
       "pre-commit": "f2elint commit-file-scan",
