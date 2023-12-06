@@ -3,8 +3,8 @@
   "displayName": "Case Translation",
   "description": "一键转换成常用大小驼峰等格式",
   "publisher": "IOLOII",
-  "icon": "images/logo.png",
-  "version": "1.1.0",
+  "icon": "images/Snipaste_2023-12-07_00-39-11.png",
+  "version": "1.0.0",
   "engines": {
     "vscode": "^1.50.0"
   },

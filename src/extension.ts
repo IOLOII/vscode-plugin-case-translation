@@ -36,6 +36,7 @@ const changeCaseMap = [
   { name: "constantCase", handle: constantCase, description: "constantCase 常量" },
 ];
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const checkUpdate = async (context: ExtensionContext) => {
   const { packageJSON } = context.extension
   const { globalState } = context;
@@ -57,12 +58,12 @@ const checkUpdate = async (context: ExtensionContext) => {
   }
 }
 export function activate(context: ExtensionContext) {
-  checkUpdate(context);
-  const translation = commands.registerCommand("extension.varTranslation", main);
+  // checkUpdate(context); // 暂停更新
+  const translation = commands.registerCommand("extension.caseTranslation", main);
   context.subscriptions.push(translation);
   changeCaseMap.forEach((item) => {
     context.subscriptions.push(
-      commands.registerCommand(`extension.varTranslation.${item.name}`, () => typeTranslation(item.name))
+      commands.registerCommand(`extension.caseTranslation.${item.name}`, () => typeTranslation(item.name))
     );
   });
 }
@@ -90,7 +91,7 @@ async function vscodeSelect(word: string): Promise<string | undefined> {
  */
 
 async function getTranslateResult(srcText: string) {
-  const engine: EengineType = workspace.getConfiguration("varTranslation").translationEngine;
+  const engine: EengineType = workspace.getConfiguration("caseTranslation").translationEngine;
   const cache = translateCacheWords.find((item) => item.engine === engine && item.srcText === srcText);
   if (cache) {
     return Promise.resolve(cache.result);
@@ -100,6 +101,8 @@ async function getTranslateResult(srcText: string) {
   if (/^[a-zA-Z\d\s\/\-\._]+$/.test(srcText)) {
     return srcText;
   }
+  return
+  // eslint-disable-next-line no-unreachable
   try {
     window.showQuickPick([{ label: "网络翻译中..." }]);
     const res = await translate(srcText, "en");
