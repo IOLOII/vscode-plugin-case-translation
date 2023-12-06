@@ -1,10 +1,10 @@
 {
-  "name": "var-translation",
-  "displayName": "驼峰翻译助手",
-  "description": "纠结怎么取变量? 中文一键翻译转换成常用大小驼峰等格式",
-  "publisher": "svenzhao",
+  "name": "case-translation",
+  "displayName": "Case Translation",
+  "description": "一键转换成常用大小驼峰等格式",
+  "publisher": "IOLOII",
   "icon": "images/logo.png",
-  "version": "0.13.48",
+  "version": "1.1.0",
   "engines": {
     "vscode": "^1.50.0"
   },
@@ -13,9 +13,8 @@
   ],
   "keywords": [
     "translate",
-    "variable",
+    "case",
     "camel",
-    "var",
     "翻译",
     "变量",
     "驼峰"
@@ -27,84 +26,84 @@
   "contributes": {
     "keybindings": [
       {
-        "command": "extension.varTranslation",
+        "command": "extension.caseTranslation",
         "key": "Alt+shift+t",
         "mac": "cmd+shift+t"
       }
     ],
     "commands": [
       {
-        "command": "extension.varTranslation",
+        "command": "extension.caseTranslation",
         "title": "驼峰翻译选择翻译",
         "when": "editorTextFocus",
-        "category": "var-translation"
+        "category": "case-translation"
       },
       {
-        "command": "extension.varTranslation.camelCase",
+        "command": "extension.caseTranslation.camelCase",
         "title": "camelCase 驼峰(小) camelCase",
         "when": "editorTextFocus",
-        "category": "var-translation"
+        "category": "case-translation"
       },
       {
-        "command": "extension.varTranslation.pascalCase",
+        "command": "extension.caseTranslation.pascalCase",
         "title": "pascalCase 驼峰(大) PascalCase",
         "when": "editorTextFocus",
-        "category": "var-translation"
+        "category": "case-translation"
       },
       {
-        "command": "extension.varTranslation.paramCase",
+        "command": "extension.caseTranslation.paramCase",
         "title": "paramCase 中划线(小) param-case",
         "when": "editorTextFocus",
-        "category": "var-translation"
+        "category": "case-translation"
       },
       {
-        "command": "extension.varTranslation.snakeCase",
+        "command": "extension.caseTranslation.snakeCase",
         "title": "snakeCase 下划线 snake_case",
         "when": "editorTextFocus",
-        "category": "var-translation"
+        "category": "case-translation"
       },
       {
-        "command": "extension.varTranslation.constantCase",
+        "command": "extension.caseTranslation.constantCase",
         "title": "constantCase 常量 CONSTANT_CASE",
         "when": "editorTextFocus",
-        "category": "var-translation"
+        "category": "case-translation"
       },
       {
-        "command": "extension.varTranslation.capitalCase",
+        "command": "extension.caseTranslation.capitalCase",
         "title": "capitalCase 分词(大) Capital Case",
         "when": "editorTextFocus",
-        "category": "var-translation"
+        "category": "case-translation"
       },
       {
-        "command": "extension.varTranslation.dotCase",
+        "command": "extension.caseTranslation.dotCase",
         "title": "dotCase 对象属性 dot case",
         "when": "editorTextFocus",
-        "category": "var-translation"
+        "category": "case-translation"
       },
       {
-        "command": "extension.varTranslation.headerCase",
+        "command": "extension.caseTranslation.headerCase",
         "title": "headerCase 中划线(大) Header-Case",
         "when": "editorTextFocus",
-        "category": "var-translation"
+        "category": "case-translation"
       },
       {
-        "command": "extension.varTranslation.noCase",
+        "command": "extension.caseTranslation.noCase",
         "title": "noCase 分词(小) no case",
         "when": "editorTextFocus",
-        "category": "var-translation"
+        "category": "case-translation"
       },
       {
-        "command": "extension.varTranslation.pathCase",
+        "command": "extension.caseTranslation.pathCase",
         "title": "pathCase 文件路径 path/case",
         "when": "editorTextFocus",
-        "category": "var-translation"
+        "category": "case-translation"
       }
     ],
     "menus": {
       "editor/context": [
         {
           "when": "editorTextFocus",
-          "command": "extension.varTranslation"
+          "command": "extension.caseTranslation"
         }
       ]
     },
@@ -112,32 +111,32 @@
       "type": "object",
       "title": "驼峰翻译配置",
       "properties": {
-        "varTranslation.baiduSecret": {
+        "caseTranslation.baiduSecret": {
           "type": "string",
           "default": "",
           "description": "百度翻译密钥 使用逗号隔开例如 appid,scretkey 申请地址看文档"
         },
-        "varTranslation.tencentSecret": {
+        "caseTranslation.tencentSecret": {
           "type": "string",
           "default": "",
           "description": "腾讯翻译君密钥 使用逗号隔开例如 secretId,secretKey 申请地址看文档"
         },
-        "varTranslation.googleTld": {
+        "caseTranslation.googleTld": {
           "type": "string",
           "default": "",
           "description": "用于在调用API时使用的谷歌翻译的顶级域名:https://translate.google.{Tld} 默认为com"
         },
-        "varTranslation.openai.apiKey": {
+        "caseTranslation.openai.apiKey": {
           "type": "string",
           "default": "",
           "description": "官方ApiKey是sk-开头的字符串"
         },
-        "varTranslation.openai.apiBaseUrl": {
+        "caseTranslation.openai.apiBaseUrl": {
           "type": "string",
           "default": "",
           "description": "OpenAI API基础URL的可选覆盖。如果您自定义了它，请确保具有相同的格式，例如以https://开头且没有尾随斜杠。补全端点的后缀将在内部添加，例如：${apiBaseUrl}/chat/completions，参考官方路线：https://api.openai.com/v1。"
         },
-        "varTranslation.translationEngine": {
+        "caseTranslation.translationEngine": {
           "type": "string",
           "enum": [
             "google",
@@ -197,9 +196,9 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/SvenZhao/var-translation"
+    "url": "https://github.com/SvenZhao/case-translation"
   },
-  "homepage": "https://github.com/SvenZhao/var-translation/blob/master/README.md",
+  "homepage": "https://github.com/SvenZhao/case-translation/blob/master/README.md",
   "husky": {
     "hooks": {
       "pre-commit": "f2elint commit-file-scan",
