@@ -4,7 +4,7 @@
   "description": "一键转换成常用大小驼峰等格式",
   "publisher": "IOLOII",
   "icon": "images/Snipaste_2023-12-07_00-39-11.png",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "engines": {
     "vscode": "^1.50.0"
   },
@@ -168,7 +168,7 @@
     "lint": "eslint src --ext ts",
     "test": "node ./out/test/runTest.js",
     "release": "standard-version",
-    "publish": "npm run release && vsce publish",
+    "publish": "npm run package && npm run release && vsce publish",
     "f2elint-scan": "f2elint scan",
     "f2elint-fix": "f2elint fix"
   },
