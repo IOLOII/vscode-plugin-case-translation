@@ -109,7 +109,11 @@ async function getTranslateResult(srcText: string) {
   if (/^[a-zA-Z\d\s\/\-\._]+$/.test(srcText)) {
     return srcText;
   }
-  window.showWarningMessage(`Only support for code case transition`);
+  if (!srcText) {
+    window.showWarningMessage(`Please select codes`);
+  } else {
+    window.showWarningMessage(`Only support for code case transition`);
+  }
   return false
   // eslint-disable-next-line no-unreachable
   try {
