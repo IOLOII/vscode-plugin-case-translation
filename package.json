@@ -4,7 +4,7 @@
   "description": "一键转换成常用大小驼峰等格式",
   "publisher": "IOLOII",
   "icon": "images/Snipaste_2023-12-07_00-39-11.png",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "engines": {
     "vscode": "^1.50.0"
   },
@@ -17,7 +17,8 @@
     "camel",
     "翻译",
     "变量",
-    "驼峰"
+    "驼峰",
+    "IOLOII"
   ],
   "activationEvents": [
     "*"
@@ -34,7 +35,7 @@
     "commands": [
       {
         "command": "extension.caseTranslation",
-        "title": "驼峰翻译选择翻译",
+        "title": "Case Translation 🔄",
         "when": "editorTextFocus",
         "category": "case-translation"
       },
